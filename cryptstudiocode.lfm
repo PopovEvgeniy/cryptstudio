@@ -1,0 +1,124 @@
+object Form1: TForm1
+  Left = 234
+  Height = 225
+  Top = 155
+  Width = 411
+  Caption = 'Form1'
+  ClientHeight = 225
+  ClientWidth = 411
+  OnCreate = FormCreate
+  LCLVersion = '1.6.4.0'
+  object LabeledEdit1: TLabeledEdit
+    Left = 88
+    Height = 21
+    Top = 24
+    Width = 184
+    EditLabel.AnchorSideTop.Control = LabeledEdit1
+    EditLabel.AnchorSideTop.Side = asrCenter
+    EditLabel.AnchorSideRight.Control = LabeledEdit1
+    EditLabel.AnchorSideBottom.Control = LabeledEdit1
+    EditLabel.AnchorSideBottom.Side = asrBottom
+    EditLabel.Left = 36
+    EditLabel.Height = 13
+    EditLabel.Top = 28
+    EditLabel.Width = 49
+    EditLabel.Caption = 'Target file'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    TabOrder = 0
+    Text = 'LabeledEdit1'
+    OnChange = LabeledEdit1Change
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 88
+    Height = 21
+    Top = 64
+    Width = 184
+    EditLabel.AnchorSideTop.Control = LabeledEdit2
+    EditLabel.AnchorSideTop.Side = asrCenter
+    EditLabel.AnchorSideRight.Control = LabeledEdit2
+    EditLabel.AnchorSideBottom.Control = LabeledEdit2
+    EditLabel.AnchorSideBottom.Side = asrBottom
+    EditLabel.Left = 39
+    EditLabel.Height = 13
+    EditLabel.Top = 68
+    EditLabel.Width = 46
+    EditLabel.Caption = 'Password'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    TabOrder = 1
+    Text = 'LabeledEdit2'
+    OnChange = LabeledEdit2Change
+  end
+  object Label1: TLabel
+    Left = 8
+    Height = 13
+    Top = 152
+    Width = 26
+    Caption = 'Mode'
+    ParentColor = False
+  end
+  object RadioButton1: TRadioButton
+    Left = 80
+    Height = 17
+    Top = 152
+    Width = 71
+    Caption = 'Encryption'
+    TabOrder = 2
+  end
+  object RadioButton2: TRadioButton
+    Left = 192
+    Height = 17
+    Top = 152
+    Width = 72
+    Caption = 'Decryption'
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 280
+    Height = 25
+    Top = 24
+    Width = 128
+    Caption = 'Open'
+    OnClick = Button1Click
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 64
+    Height = 25
+    Top = 192
+    Width = 144
+    Caption = 'Start operation'
+    OnClick = Button2Click
+    TabOrder = 5
+  end
+  object CheckBox1: TCheckBox
+    Left = 8
+    Height = 17
+    Top = 112
+    Width = 123
+    Caption = 'Hide typing password'
+    OnClick = CheckBox1Click
+    TabOrder = 6
+  end
+  object OpenDialog1: TOpenDialog
+    left = 344
+    top = 64
+  end
+  object Process1: TProcessUTF8
+    Active = False
+    Options = []
+    Priority = ppNormal
+    StartupOptions = []
+    ShowWindow = swoNone
+    WindowColumns = 0
+    WindowHeight = 0
+    WindowLeft = 0
+    WindowRows = 0
+    WindowTop = 0
+    WindowWidth = 0
+    FillAttribute = 0
+    left = 288
+    top = 64
+  end
+end
