@@ -79,7 +79,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9';
+ Form1.Caption:='Crypt studio 0.9.1';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
