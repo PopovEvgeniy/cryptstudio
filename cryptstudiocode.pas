@@ -36,7 +36,6 @@ type
   end; 
 
   var Form1: TForm1;
-  function check_input(input:string):Boolean;
   function convert_file_name(source:string): string;
   procedure window_setup();
   procedure set_encryption_mode();
@@ -53,17 +52,6 @@ implementation
 
 { TForm1 }
 
-function check_input(input:string):Boolean;
-var target:Boolean;
-begin
-target:=True;
-if input='' then
-begin
-target:=False;
-end;
-check_input:=target;
-end;
-
 function convert_file_name(source:string): string;
 var target:string;
 begin
@@ -79,7 +67,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.1';
+ Form1.Caption:='Crypt studio 0.9.2';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -156,12 +144,12 @@ end;
 
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
-Form1.Button2.Enabled:=check_input(Form1.LabeledEdit2.Text) and check_input(Form1.LabeledEdit1.Text);
+Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
 end;
 
 procedure TForm1.LabeledEdit2Change(Sender: TObject);
 begin
-Form1.Button2.Enabled:=check_input(Form1.LabeledEdit2.Text) and check_input(Form1.LabeledEdit1.Text);
+Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);

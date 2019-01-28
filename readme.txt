@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 0.9.1
+                                  Version 0.9.2
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -37,7 +37,7 @@ Change log
 0.4.1 - 0.4.3 - Small changes in source code.
 0.4.4 - Program was adapted to new version OPEN FILE CRYPTOR.
 0.4.5 - 0.4.6 - Small changes in source code.
-0.4.7 - Russian localization removed.
+0.4.7 - Russian localization was removed.
 0.4.8 - 0.4.9 - Small changes in source code.
 0.5 - Small changes in source code.
 0.6 - Program was adapted to BLACK ICE.
@@ -45,3 +45,4 @@ Change log
 0.8 - Small changes.
 0.9 - Small bug was fixed.
 0.9.1 - 64 bit support was added.
+0.9.2 - Small changes.
