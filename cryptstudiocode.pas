@@ -29,6 +29,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
     procedure LabeledEdit2Change(Sender: TObject);
+    procedure OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -55,19 +58,19 @@ implementation
 function convert_file_name(source:string): string;
 var target:string;
 begin
-target:=source;
-if Pos(' ',source)>0 then
-begin
-target:='"';
-target:=target+source+'"';
-end;
-convert_file_name:=target;
+ target:=source;
+ if Pos(' ',source)>0 then
+ begin
+  target:='"';
+  target:=target+source+'"';
+ end;
+ convert_file_name:=target;
 end;
 
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.2';
+ Form1.Caption:='Crypt studio 0.9.3';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -75,123 +78,131 @@ end;
 
 procedure set_encryption_mode();
 begin
-Form1.OpenDialog1.Title:='Open a file';
-Form1.OpenDialog1.DefaultExt:='*.*';
-Form1.OpenDialog1.FileName:='*.*';
-Form1.OpenDialog1.Filter:='All files|.*';
+ Form1.OpenDialog1.Title:='Open a file';
+ Form1.OpenDialog1.DefaultExt:='*.*';
+ Form1.OpenDialog1.FileName:='*.*';
+ Form1.OpenDialog1.Filter:='All files|.*';
 end;
 
 procedure set_decryption_mode();
 begin
-Form1.OpenDialog1.Title:='Open a encrypted Black Ice container';
-Form1.OpenDialog1.DefaultExt:='*.bef';
-Form1.OpenDialog1.FileName:='*.bef';
-Form1.OpenDialog1.Filter:='Black Ice container|.bef';
+ Form1.OpenDialog1.Title:='Open a encrypted Black Ice container';
+ Form1.OpenDialog1.DefaultExt:='*.bef';
+ Form1.OpenDialog1.FileName:='*.bef';
+ Form1.OpenDialog1.Filter:='Black Ice container|.bef';
 end;
 
 procedure interface_setup();
 begin
-Form1.Button1.ShowHint:=False;
-Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
-Form1.RadioButton1.Checked:=True;
-Form1.RadioButton1.ShowHint:=Form1.Button1.ShowHint;
-Form1.RadioButton2.ShowHint:=Form1.Button1.ShowHint;
-Form1.LabeledEdit1.Text:='';
-Form1.LabeledEdit2.Text:=Form1.LabeledEdit1.Text;
-Form1.LabeledEdit1.LabelPosition:=lpLeft;
-Form1.LabeledEdit2.LabelPosition:=Form1.LabeledEdit1.LabelPosition;
-Form1.LabeledEdit1.Enabled:=False;
+ Form1.Button1.ShowHint:=False;
+ Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
+ Form1.RadioButton1.Checked:=True;
+ Form1.RadioButton1.ShowHint:=Form1.Button1.ShowHint;
+ Form1.RadioButton2.ShowHint:=Form1.Button1.ShowHint;
+ Form1.LabeledEdit1.Text:='';
+ Form1.LabeledEdit2.Text:=Form1.LabeledEdit1.Text;
+ Form1.LabeledEdit1.LabelPosition:=lpLeft;
+ Form1.LabeledEdit2.LabelPosition:=Form1.LabeledEdit1.LabelPosition;
+ Form1.LabeledEdit1.Enabled:=False;
 end;
 
 procedure frontend_setup();
 begin
-Form1.OpenDialog1.InitialDir:='';
-Form1.Process1.Executable:=ExtractFilePath(Application.ExeName)+'blackice';
+ Form1.OpenDialog1.InitialDir:='';
+ Form1.Process1.Executable:=ExtractFilePath(Application.ExeName)+'blackice';
 end;
 
 procedure common_setup();
 begin
-window_setup();
-set_encryption_mode();
-interface_setup();
-frontend_setup();
+ window_setup();
+ set_encryption_mode();
+ interface_setup();
+ frontend_setup();
 end;
 
 procedure language_setup();
 begin
-Form1.Button1.Caption:='Open';
-Form1.Button2.Caption:='Start operation';
-Form1.CheckBox1.Caption:='Hide typing password';
-Form1.LabeledEdit1.EditLabel.Caption:='Target file';
-Form1.LabeledEdit2.EditLabel.Caption:='Password';
-Form1.Label1.Caption:='Mode';
-Form1.RadioButton1.Caption:='Encryption';
-Form1.RadioButton2.Caption:='Decryption';
+ Form1.Button1.Caption:='Open';
+ Form1.Button2.Caption:='Start operation';
+ Form1.CheckBox1.Caption:='Hide typing password';
+ Form1.LabeledEdit1.EditLabel.Caption:='Target file';
+ Form1.LabeledEdit2.EditLabel.Caption:='Password';
+ Form1.Label1.Caption:='Mode';
+ Form1.RadioButton1.Caption:='Encryption';
+ Form1.RadioButton2.Caption:='Decryption';
 end;
 
 procedure setup();
 begin
-common_setup();
-language_setup();
+ common_setup();
+ language_setup();
+ set_encryption_mode();
 end;
 
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-setup();
+ setup();
 end;
 
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
-Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
+ Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
 end;
 
 procedure TForm1.LabeledEdit2Change(Sender: TObject);
 begin
-Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
+ Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
+end;
+
+procedure TForm1.OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);
+begin
+ Form1.LabeledEdit1.Text:=Form1.OpenDialog1.FileName;
+end;
+
+procedure TForm1.RadioButton1Click(Sender: TObject);
+begin
+ set_encryption_mode();
+end;
+
+procedure TForm1.RadioButton2Click(Sender: TObject);
+begin
+ set_decryption_mode();
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-if Form1.RadioButton1.Checked=True then
-begin
-set_encryption_mode();
-end
-else
-begin
-set_decryption_mode();
-end;
-if Form1.OpenDialog1.Execute()=True then Form1.LabeledEdit1.Text:=Form1.OpenDialog1.FileName;
+ Form1.OpenDialog1.Execute();
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-Form1.Process1.Parameters.Clear();
-if Form1.RadioButton1.Checked=True then
-begin
-Form1.Process1.Parameters.Add('encrypt');
-end
-else
-begin
-Form1.Process1.Parameters.Add('decrypt');
-end;
-Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit2.Text));
-Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit1.Text));
-Form1.Process1.Execute();
+ Form1.Process1.Parameters.Clear();
+ if Form1.RadioButton1.Checked=True then
+ begin
+  Form1.Process1.Parameters.Add('encrypt');
+ end
+ else
+ begin
+  Form1.Process1.Parameters.Add('decrypt');
+ end;
+ Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit2.Text));
+ Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit1.Text));
+ Form1.Process1.Execute();
 end;
 
 procedure TForm1.CheckBox1Click(Sender: TObject);
 begin
-if Form1.CheckBox1.Checked=True then
-begin
-Form1.LabeledEdit2.PasswordChar:='*';
-end
-else
-begin
-Form1.LabeledEdit2.PasswordChar:=#0;
-end;
-Form1.LabeledEdit2.SetFocus();
+ if Form1.CheckBox1.Checked=True then
+ begin
+  Form1.LabeledEdit2.PasswordChar:='*';
+ end
+ else
+ begin
+  Form1.LabeledEdit2.PasswordChar:=#0;
+ end;
+ Form1.LabeledEdit2.SetFocus();
 end;
 
 end.

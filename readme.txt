@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 0.9.2
+                                  Version 0.9.3
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -8,7 +8,6 @@ System requirement
 
 Windows 2000 or higher for 32 bit system
 Windows Vista or higher for 64 bit system
-549 kilobytes free space on storage media
 
 Program description
 
@@ -26,7 +25,7 @@ You can send me a letter to tuzik87@inbox.ru
 About program modification
 
 Source code is included in source.zip archive.
-It can be compiled under Lazarus 1.8.4 or higher.
+It can be compiled under Lazarus 2.0.10 or higher.
 
 Change log
 
@@ -45,4 +44,4 @@ Change log
 0.8 - Small changes.
 0.9 - Small bug was fixed.
 0.9.1 - 64 bit support was added.
-0.9.2 - Small changes.
+0.9.2 - 0.9.3 - Small changes.
