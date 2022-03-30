@@ -25,7 +25,7 @@ type
     RadioButton2: TRadioButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure CheckBox1Click(Sender: TObject);
+    procedure CheckBox1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
     procedure LabeledEdit2Change(Sender: TObject);
@@ -61,8 +61,7 @@ begin
  target:=source;
  if Pos(' ',source)>0 then
  begin
-  target:='"';
-  target:=target+source+'"';
+  target:='"'+target+source+'"';
  end;
  convert_file_name:=target;
 end;
@@ -70,7 +69,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.3';
+ Form1.Caption:='Crypt studio 0.9.5';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -96,6 +95,7 @@ procedure interface_setup();
 begin
  Form1.Button1.ShowHint:=False;
  Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
+ Form1.CheckBox1.Checked:=True;
  Form1.RadioButton1.Checked:=True;
  Form1.RadioButton1.ShowHint:=Form1.Button1.ShowHint;
  Form1.RadioButton2.ShowHint:=Form1.Button1.ShowHint;
@@ -192,17 +192,14 @@ begin
  Form1.Process1.Execute();
 end;
 
-procedure TForm1.CheckBox1Click(Sender: TObject);
+procedure TForm1.CheckBox1Change(Sender: TObject);
 begin
+ Form1.LabeledEdit2.PasswordChar:=#0;
  if Form1.CheckBox1.Checked=True then
  begin
   Form1.LabeledEdit2.PasswordChar:='*';
- end
- else
- begin
-  Form1.LabeledEdit2.PasswordChar:=#0;
  end;
- Form1.LabeledEdit2.SetFocus();
+
 end;
 
 end.
