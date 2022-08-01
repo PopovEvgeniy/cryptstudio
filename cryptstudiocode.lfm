@@ -7,7 +7,7 @@ object Form1: TForm1
   ClientHeight = 225
   ClientWidth = 411
   OnCreate = FormCreate
-  LCLVersion = '2.2.0.4'
+  LCLVersion = '2.2.2.0'
   object LabeledEdit1: TLabeledEdit
     Left = 88
     Height = 23
@@ -16,6 +16,7 @@ object Form1: TForm1
     EditLabel.Height = 15
     EditLabel.Width = 51
     EditLabel.Caption = 'Target file'
+    EditLabel.ParentColor = False
     LabelPosition = lpLeft
     TabOrder = 0
     Text = 'LabeledEdit1'
@@ -29,6 +30,7 @@ object Form1: TForm1
     EditLabel.Height = 15
     EditLabel.Width = 50
     EditLabel.Caption = 'Password'
+    EditLabel.ParentColor = False
     LabelPosition = lpLeft
     TabOrder = 1
     Text = 'LabeledEdit2'
@@ -40,6 +42,7 @@ object Form1: TForm1
     Top = 152
     Width = 31
     Caption = 'Mode'
+    ParentColor = False
   end
   object RadioButton1: TRadioButton
     Left = 80

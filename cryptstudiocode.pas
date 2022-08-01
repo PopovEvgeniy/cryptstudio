@@ -38,16 +38,7 @@ type
     { public declarations }
   end; 
 
-  var Form1: TForm1;
-  function convert_file_name(source:string): string;
-  procedure window_setup();
-  procedure set_encryption_mode();
-  procedure set_decryption_mode();
-  procedure interface_setup();
-  procedure frontend_setup();
-  procedure common_setup();
-  procedure language_setup();
-  procedure setup();
+var Form1: TForm1;
 
 implementation
 
@@ -69,7 +60,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.5';
+ Form1.Caption:='Crypt studio 0.9.5.1';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
