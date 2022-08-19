@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 0.9.5.2
+                                  Version 0.9.6
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -12,7 +12,7 @@ Windows Vista or higher for 64-bit system
 Program description
 
 This program is a graphic shell for BLACK ICE.
-Put executable file of BLACK ICE to CRYPT STUDIO directory before first start.
+Put the executable file of BLACK ICE to CRYPT STUDIO directory before first start.
 
 License
 
@@ -47,3 +47,4 @@ Change log
 0.9.2 - 0.9.5 - Small changes.
 0.9.5.1 - Source code recompiled under Lazarus 2.2.2.
 0.9.5.2 - Documentation updated.
+0.9.6 - Small changes.

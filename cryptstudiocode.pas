@@ -60,7 +60,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.5.1';
+ Form1.Caption:='Crypt studio 0.9.6';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -103,14 +103,6 @@ begin
  Form1.Process1.Executable:=ExtractFilePath(Application.ExeName)+'blackice';
 end;
 
-procedure common_setup();
-begin
- window_setup();
- set_encryption_mode();
- interface_setup();
- frontend_setup();
-end;
-
 procedure language_setup();
 begin
  Form1.Button1.Caption:='Open';
@@ -125,9 +117,11 @@ end;
 
 procedure setup();
 begin
- common_setup();
- language_setup();
+ window_setup();
  set_encryption_mode();
+ interface_setup();
+ frontend_setup();
+ language_setup();
 end;
 
 { TForm1 }
