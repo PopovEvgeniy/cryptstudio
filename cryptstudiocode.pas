@@ -5,7 +5,7 @@ unit cryptstudiocode;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Dialogs,
+  Classes, SysUtils, Forms, Controls, Dialogs,
   ExtCtrls, StdCtrls, UTF8Process;
 
 type
@@ -46,7 +46,7 @@ implementation
 
 { TForm1 }
 
-function convert_file_name(source:string): string;
+function convert_file_name(const source:string): string;
 var target:string;
 begin
  target:=source;
@@ -60,7 +60,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.6';
+ Form1.Caption:='Crypt studio 0.9.7';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -100,7 +100,7 @@ end;
 procedure frontend_setup();
 begin
  Form1.OpenDialog1.InitialDir:='';
- Form1.Process1.Executable:=ExtractFilePath(Application.ExeName)+'blackice';
+ Form1.Process1.Executable:=ExtractFilePath(Application.ExeName)+'blackice.exe';
 end;
 
 procedure language_setup();

@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 0.9.6
+                                  Version 0.9.7
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -25,7 +25,7 @@ You can send me a letter to tuzik87@inbox.ru
 About program modification
 
 Source code included in source.zip archive.
-It can be compiled under Lazarus 2.2.2 or higher.
+It can be compiled under Lazarus 2.2.6 or higher.
 
 Change log
 
@@ -47,4 +47,4 @@ Change log
 0.9.2 - 0.9.5 - Small changes.
 0.9.5.1 - Source code recompiled under Lazarus 2.2.2.
 0.9.5.2 - Documentation updated.
-0.9.6 - Small changes.
+0.9.6 - 0.9.7 - Small changes.
