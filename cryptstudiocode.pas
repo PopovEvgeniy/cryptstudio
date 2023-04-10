@@ -52,7 +52,7 @@ begin
  target:=source;
  if Pos(' ',source)>0 then
  begin
-  target:='"'+target+source+'"';
+  target:='"'+source+'"';
  end;
  convert_file_name:=target;
 end;
@@ -60,7 +60,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.7';
+ Form1.Caption:='Crypt studio 0.9.8';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
