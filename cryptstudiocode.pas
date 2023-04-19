@@ -29,7 +29,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
     procedure LabeledEdit2Change(Sender: TObject);
-    procedure OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
   private
@@ -60,7 +59,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 0.9.8';
+ Form1.Caption:='Crypt studio 1.0';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -141,11 +140,6 @@ begin
  Form1.Button2.Enabled:=(Form1.LabeledEdit2.Text<>'') and (Form1.LabeledEdit1.Text<>'');
 end;
 
-procedure TForm1.OpenDialog1CanClose(Sender: TObject; var CanClose: boolean);
-begin
- Form1.LabeledEdit1.Text:=Form1.OpenDialog1.FileName;
-end;
-
 procedure TForm1.RadioButton1Click(Sender: TObject);
 begin
  set_encryption_mode();
@@ -158,7 +152,7 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
- Form1.OpenDialog1.Execute();
+ if Form1.OpenDialog1.Execute()=True then Form1.LabeledEdit1.Text:=Form1.OpenDialog1.FileName;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -172,9 +166,13 @@ begin
  begin
   Form1.Process1.Parameters.Add('decrypt');
  end;
- Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit2.Text));
- Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit1.Text));
- Form1.Process1.Execute();
+ if FileExists(Form1.Process1.Executable)=True then
+ begin
+  Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit2.Text));
+  Form1.Process1.Parameters.Add(convert_file_name(Form1.LabeledEdit1.Text));
+  Form1.Process1.Execute();
+ end;
+
 end;
 
 procedure TForm1.CheckBox1Change(Sender: TObject);

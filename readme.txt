@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 0.9.8
+                                  Version 1.0
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -48,3 +48,5 @@ Change log
 0.9.5.1 - Source code recompiled under Lazarus 2.2.2.
 0.9.5.2 - Documentation updated.
 0.9.6 - 0.9.8 - Small changes.
+0.9.9 - Small bug fixed.
+1.0 - Small changes.
