@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 1.0
+                                  Version 1.0.3
 
                          This software made by Popov Evgeniy Alekseyevich
 
@@ -49,4 +49,4 @@ Change log
 0.9.5.2 - Documentation updated.
 0.9.6 - 0.9.8 - Small changes.
 0.9.9 - Small bug fixed.
-1.0 - Small changes.
+1.0 - 1.0.3 - Small changes.
