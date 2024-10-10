@@ -7,14 +7,14 @@ object Form1: TForm1
   ClientHeight = 225
   ClientWidth = 411
   OnCreate = FormCreate
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.6.0.0'
   object LabeledEdit1: TLabeledEdit
     Left = 88
     Height = 23
     Top = 24
     Width = 184
     EditLabel.Height = 15
-    EditLabel.Width = 51
+    EditLabel.Width = 52
     EditLabel.Caption = 'Target file'
     EditLabel.ParentColor = False
     LabelPosition = lpLeft
@@ -26,7 +26,7 @@ object Form1: TForm1
     Left = 88
     Height = 23
     Top = 64
-    Width = 184
+    Width = 312
     EditLabel.Height = 15
     EditLabel.Width = 50
     EditLabel.Caption = 'Password'
@@ -48,19 +48,19 @@ object Form1: TForm1
     Left = 80
     Height = 19
     Top = 152
-    Width = 77
+    Width = 75
     Caption = 'Encryption'
-    OnClick = RadioButton1Click
     TabOrder = 2
+    OnClick = RadioButton1Click
   end
   object RadioButton2: TRadioButton
     Left = 192
     Height = 19
     Top = 152
-    Width = 78
+    Width = 76
     Caption = 'Decryption'
-    OnClick = RadioButton2Click
     TabOrder = 3
+    OnClick = RadioButton2Click
   end
   object Button1: TButton
     Left = 280
@@ -68,30 +68,30 @@ object Form1: TForm1
     Top = 24
     Width = 128
     Caption = 'Open'
-    OnClick = Button1Click
     TabOrder = 4
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 64
     Height = 25
     Top = 192
     Width = 144
-    Caption = 'Start operation'
-    OnClick = Button2Click
+    Caption = 'Start'
     TabOrder = 5
+    OnClick = Button2Click
   end
   object CheckBox1: TCheckBox
     Left = 8
     Height = 19
     Top = 112
-    Width = 135
-    Caption = 'Hide typing password'
-    OnChange = CheckBox1Change
+    Width = 116
+    Caption = 'Hide the password'
     TabOrder = 6
+    OnChange = CheckBox1Change
   end
   object OpenDialog1: TOpenDialog
-    Left = 344
-    Top = 64
+    Left = 352
+    Top = 152
   end
   object Process1: TProcessUTF8
     Active = False
@@ -106,7 +106,7 @@ object Form1: TForm1
     WindowTop = 0
     WindowWidth = 0
     FillAttribute = 0
-    Left = 288
-    Top = 64
+    Left = 280
+    Top = 152
   end
 end

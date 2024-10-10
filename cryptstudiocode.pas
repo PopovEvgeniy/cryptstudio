@@ -77,7 +77,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- Form1.Caption:='Crypt studio 1.0.3';
+ Form1.Caption:='Crypt studio 1.0.4';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.BorderStyle:=bsDialog;
@@ -93,10 +93,10 @@ end;
 
 procedure set_decryption_mode();
 begin
- Form1.OpenDialog1.Title:='Open a encrypted Black Ice container';
+ Form1.OpenDialog1.Title:='Open an encrypted file';
  Form1.OpenDialog1.DefaultExt:='*.bef';
  Form1.OpenDialog1.FileName:='*.bef';
- Form1.OpenDialog1.Filter:='Black Ice container|.bef';
+ Form1.OpenDialog1.Filter:='Black Ice file container|.bef';
 end;
 
 procedure interface_setup();
@@ -118,8 +118,8 @@ end;
 procedure language_setup();
 begin
  Form1.Button1.Caption:='Open';
- Form1.Button2.Caption:='Start operation';
- Form1.CheckBox1.Caption:='Hide typing password';
+ Form1.Button2.Caption:='Start';
+ Form1.CheckBox1.Caption:='Hide the password';
  Form1.LabeledEdit1.EditLabel.Caption:='Target file';
  Form1.LabeledEdit2.EditLabel.Caption:='Password';
  Form1.Label1.Caption:='Mode';
