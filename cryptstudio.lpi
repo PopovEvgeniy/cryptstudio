@@ -82,14 +82,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="85"/>
-        <CursorPos X="29" Y="99"/>
+        <TopLine Value="67"/>
+        <CursorPos X="36" Y="80"/>
         <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
     </Units>
-    <JumpHistory Count="26" HistoryIndex="25">
+    <JumpHistory Count="27" HistoryIndex="26">
       <Position1>
         <Filename Value="cryptstudiocode.pas"/>
         <Caret Line="97" Column="36" TopLine="97"/>
@@ -194,6 +194,10 @@
         <Filename Value="cryptstudiocode.pas"/>
         <Caret Line="172" Column="23" TopLine="147"/>
       </Position26>
+      <Position27>
+        <Filename Value="cryptstudiocode.pas"/>
+        <Caret Line="99" Column="29" TopLine="85"/>
+      </Position27>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
