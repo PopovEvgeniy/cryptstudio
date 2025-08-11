@@ -1,6 +1,6 @@
                                  CRYPT STUDIO
 
-                                  Version 1.0.6
+                                  Version 1.0.6.1
 
                          This software was made by Popov Evgeniy Alekseyevich
 
@@ -16,11 +16,7 @@ Put the executable file of BLACK ICE in the CRYPT STUDIO directory before the fi
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
-
-Contact
-
-You can send me a letter at tuzik87@inbox.ru.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 About program modification
 
@@ -55,3 +51,4 @@ Change log
 1.0.4.1-1.0.4.2: The documentation has been updated.
 1.0.5: The source code was recompiled under Lazarus 4.0 RC1.
 1.0.6: The source code was recompiled under Lazarus 4.0 RC3.
+1.0.6.1: The documentation has been updated.
