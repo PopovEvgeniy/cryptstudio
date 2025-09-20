@@ -77,7 +77,7 @@ end;
 procedure window_setup();
 begin
  Application.Title:='Crypt studio';
- MainWindow.Caption:='Crypt studio 1.0.6';
+ MainWindow.Caption:='Crypt studio 1.0.7';
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
  MainWindow.BorderStyle:=bsDialog;
