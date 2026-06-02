@@ -1,12 +1,16 @@
 unit cryptstudiocode;
 
-{$mode objfpc}{$H+}
+{
+ This sofware was made by Popov Evgeniy Alekseyevich.
+ It is distributed under the GNU GENERAL PUBLIC LICENSE (Version 2 or higher).
+}
+
+{$mode objfpc}
+{$H+}
 
 interface
 
-uses
-  Classes, SysUtils, Forms, Controls, Dialogs,
-  ExtCtrls, StdCtrls, UTF8Process;
+uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, UTF8Process;
 
 type
 
@@ -32,7 +36,12 @@ type
     procedure EncryptionRadioButtonClick(Sender: TObject);
     procedure DecryptionRadioButtonClick(Sender: TObject);
   private
-    { private declarations }
+    procedure window_setup();
+    procedure set_encryption_mode();
+    procedure set_decryption_mode();
+    procedure interface_setup();
+    procedure language_setup();
+    procedure setup();
   public
     { public declarations }
   end; 
@@ -44,6 +53,67 @@ implementation
 {$R *.lfm}
 
 { TMainWindow }
+
+procedure TMainWindow.window_setup();
+begin
+ Application.Title:='Crypt studio';
+ Self.Caption:='Crypt studio 1.0.8';
+ Self.Font.Name:=Screen.MenuFont.Name;
+ Self.Font.Size:=14;
+ Self.BorderStyle:=bsDialog;
+end;
+
+procedure TMainWindow.set_encryption_mode();
+begin
+ Self.OpenDialog.Title:='Open a file';
+ Self.OpenDialog.DefaultExt:='*.*';
+ Self.OpenDialog.FileName:='*.*';
+ Self.OpenDialog.Filter:='All files|.*';
+end;
+
+procedure TMainWindow.set_decryption_mode();
+begin
+ Self.OpenDialog.Title:='Open an encrypted file';
+ Self.OpenDialog.DefaultExt:='*.bef';
+ Self.OpenDialog.FileName:='*.bef';
+ Self.OpenDialog.Filter:='Black Ice file container|.bef';
+end;
+
+procedure TMainWindow.interface_setup();
+begin
+ Self.OpenButton.ShowHint:=False;
+ Self.StartButton.ShowHint:=False;
+ Self.HideCheckBox.Checked:=True;
+ Self.EncryptionRadioButton.Checked:=True;
+ Self.EncryptionRadioButton.ShowHint:=False;
+ Self.DecryptionRadioButton.ShowHint:=False;
+ Self.OpenDialog.InitialDir:='';
+ Self.FileField.Text:='';
+ Self.PasswordField.Text:='';
+ Self.FileField.LabelPosition:=lpLeft;
+ Self.PasswordField.LabelPosition:=lpLeft;
+ Self.FileField.Enabled:=False;
+end;
+
+procedure TMainWindow.language_setup();
+begin
+ Self.OpenButton.Caption:='Open';
+ Self.StartButton.Caption:='Start';
+ Self.HideCheckBox.Caption:='Hide the password';
+ Self.FileField.EditLabel.Caption:='Target file';
+ Self.PasswordField.EditLabel.Caption:='Password';
+ Self.ModePanel.Caption:='Mode';
+ Self.EncryptionRadioButton.Caption:='Encryption';
+ Self.DecryptionRadioButton.Caption:='Decryption';
+end;
+
+procedure TMainWindow.setup();
+begin
+ Self.window_setup();
+ Self.set_encryption_mode();
+ Self.interface_setup();
+ Self.language_setup();
+end;
 
 function convert_file_name(const source:string): string;
 var target:string;
@@ -74,108 +144,47 @@ begin
 
 end;
 
-procedure window_setup();
-begin
- Application.Title:='Crypt studio';
- MainWindow.Caption:='Crypt studio 1.0.7';
- MainWindow.Font.Name:=Screen.MenuFont.Name;
- MainWindow.Font.Size:=14;
- MainWindow.BorderStyle:=bsDialog;
-end;
-
-procedure set_encryption_mode();
-begin
- MainWindow.OpenDialog.Title:='Open a file';
- MainWindow.OpenDialog.DefaultExt:='*.*';
- MainWindow.OpenDialog.FileName:='*.*';
- MainWindow.OpenDialog.Filter:='All files|.*';
-end;
-
-procedure set_decryption_mode();
-begin
- MainWindow.OpenDialog.Title:='Open an encrypted file';
- MainWindow.OpenDialog.DefaultExt:='*.bef';
- MainWindow.OpenDialog.FileName:='*.bef';
- MainWindow.OpenDialog.Filter:='Black Ice file container|.bef';
-end;
-
-procedure interface_setup();
-begin
- MainWindow.OpenButton.ShowHint:=False;
- MainWindow.StartButton.ShowHint:=False;
- MainWindow.HideCheckBox.Checked:=True;
- MainWindow.EncryptionRadioButton.Checked:=True;
- MainWindow.EncryptionRadioButton.ShowHint:=False;
- MainWindow.DecryptionRadioButton.ShowHint:=False;
- MainWindow.OpenDialog.InitialDir:='';
- MainWindow.FileField.Text:='';
- MainWindow.PasswordField.Text:='';
- MainWindow.FileField.LabelPosition:=lpLeft;
- MainWindow.PasswordField.LabelPosition:=lpLeft;
- MainWindow.FileField.Enabled:=False;
-end;
-
-procedure language_setup();
-begin
- MainWindow.OpenButton.Caption:='Open';
- MainWindow.StartButton.Caption:='Start';
- MainWindow.HideCheckBox.Caption:='Hide the password';
- MainWindow.FileField.EditLabel.Caption:='Target file';
- MainWindow.PasswordField.EditLabel.Caption:='Password';
- MainWindow.ModePanel.Caption:='Mode';
- MainWindow.EncryptionRadioButton.Caption:='Encryption';
- MainWindow.DecryptionRadioButton.Caption:='Decryption';
-end;
-
-procedure setup();
-begin
- window_setup();
- set_encryption_mode();
- interface_setup();
- language_setup();
-end;
-
 { TMainWindow }
 
 procedure TMainWindow.FormCreate(Sender: TObject);
 begin
- setup();
+ Self.setup();
 end;
 
 procedure TMainWindow.FileFieldChange(Sender: TObject);
 begin
- MainWindow.StartButton.Enabled:=(MainWindow.PasswordField.Text<>'') and (MainWindow.FileField.Text<>'');
+ Self.StartButton.Enabled:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
 end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
- MainWindow.StartButton.Enabled:=(MainWindow.PasswordField.Text<>'') and (MainWindow.FileField.Text<>'');
+ Self.StartButton.Enabled:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
 end;
 
 procedure TMainWindow.EncryptionRadioButtonClick(Sender: TObject);
 begin
- set_encryption_mode();
+ Self.set_encryption_mode();
 end;
 
 procedure TMainWindow.DecryptionRadioButtonClick(Sender: TObject);
 begin
- set_decryption_mode();
+ Self.set_decryption_mode();
 end;
 
 procedure TMainWindow.OpenButtonClick(Sender: TObject);
 begin
- if MainWindow.OpenDialog.Execute()=True then MainWindow.FileField.Text:=MainWindow.OpenDialog.FileName;
+ if Self.OpenDialog.Execute()=True then Self.FileField.Text:=Self.OpenDialog.FileName;
 end;
 
 procedure TMainWindow.StartButtonClick(Sender: TObject);
 begin
- do_job(MainWindow.ToolRunner,MainWindow.FileField.Text,MainWindow.PasswordField.Text,MainWindow.DecryptionRadioButton.Checked);
+ do_job(Self.ToolRunner,Self.FileField.Text,Self.PasswordField.Text,Self.DecryptionRadioButton.Checked);
 end;
 
 procedure TMainWindow.HideCheckBoxChange(Sender: TObject);
 begin
- MainWindow.PasswordField.PasswordChar:=#0;
- if MainWindow.HideCheckBox.Checked=True then MainWindow.PasswordField.PasswordChar:='*';
+ Self.PasswordField.PasswordChar:=#0;
+ if Self.HideCheckBox.Checked=True then Self.PasswordField.PasswordChar:='*';
 end;
 
 end.
