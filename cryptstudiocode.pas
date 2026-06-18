@@ -36,6 +36,7 @@ type
     procedure EncryptionRadioButtonClick(Sender: TObject);
     procedure DecryptionRadioButtonClick(Sender: TObject);
   private
+    function check_input():boolean;
     procedure window_setup();
     procedure set_encryption_mode();
     procedure set_decryption_mode();
@@ -50,14 +51,48 @@ var MainWindow: TMainWindow;
 
 implementation
 
+function convert_file_name(const source:string): string;
+var target:string;
+begin
+ target:=source;
+ if Pos(' ',source)>0 then
+ begin
+  target:='"'+source+'"';
+ end;
+ convert_file_name:=target;
+end;
+
+procedure do_job(var runner:TProcessUTF8;const target:string;const password:string;const decryption:boolean);
+var mode:string;
+begin
+ mode:='encrypt';
+ if decryption=True then  mode:='decrypt';
+ runner.Executable:=ExtractFilePath(Application.ExeName)+'blackice.exe';
+ runner.Parameters.Clear();
+ runner.Parameters.Add(mode);
+ runner.Parameters.Add(convert_file_name(password));
+ runner.Parameters.Add(convert_file_name(target));
+ try
+  runner.Execute();
+ except
+  on E:Exception do ShowMessage(E.Message);
+ end;
+
+end;
+
 {$R *.lfm}
 
 { TMainWindow }
 
+function TMainWindow.check_input():boolean;
+begin
+ Result:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
+end;
+
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Crypt studio';
- Self.Caption:='Crypt studio 1.0.8';
+ Self.Caption:='Crypt studio 1.1';
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
  Self.BorderStyle:=bsDialog;
@@ -115,35 +150,6 @@ begin
  Self.language_setup();
 end;
 
-function convert_file_name(const source:string): string;
-var target:string;
-begin
- target:=source;
- if Pos(' ',source)>0 then
- begin
-  target:='"'+source+'"';
- end;
- convert_file_name:=target;
-end;
-
-procedure do_job(var runner:TProcessUTF8;const target:string;const password:string;const decryption:boolean);
-var mode:string;
-begin
- mode:='encrypt';
- if decryption=True then  mode:='decrypt';
- runner.Executable:=ExtractFilePath(Application.ExeName)+'blackice.exe';
- runner.Parameters.Clear();
- runner.Parameters.Add(mode);
- runner.Parameters.Add(convert_file_name(password));
- runner.Parameters.Add(convert_file_name(target));
- try
-  runner.Execute();
- except
-  ;
- end;
-
-end;
-
 { TMainWindow }
 
 procedure TMainWindow.FormCreate(Sender: TObject);
@@ -153,12 +159,12 @@ end;
 
 procedure TMainWindow.FileFieldChange(Sender: TObject);
 begin
- Self.StartButton.Enabled:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
+ Self.StartButton.Enabled:=Self.check_input();
 end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
- Self.StartButton.Enabled:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
+ Self.StartButton.Enabled:=Self.check_input();
 end;
 
 procedure TMainWindow.EncryptionRadioButtonClick(Sender: TObject);
