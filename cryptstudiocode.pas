@@ -59,7 +59,7 @@ begin
  begin
   target:='"'+source+'"';
  end;
- convert_file_name:=target;
+ Result:=target;
 end;
 
 procedure do_job(var runner:TProcessUTF8;const target:string;const password:string;const decryption:boolean);
@@ -92,7 +92,7 @@ end;
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Crypt studio';
- Self.Caption:='Crypt studio 1.1';
+ Self.Caption:='Crypt studio 1.1.1';
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
  Self.BorderStyle:=bsDialog;
