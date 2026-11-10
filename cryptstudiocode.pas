@@ -36,7 +36,6 @@ type
     procedure EncryptionRadioButtonClick(Sender: TObject);
     procedure DecryptionRadioButtonClick(Sender: TObject);
   private
-    function check_input():boolean;
     procedure window_setup();
     procedure set_encryption_mode();
     procedure set_decryption_mode();
@@ -84,15 +83,10 @@ end;
 
 { TMainWindow }
 
-function TMainWindow.check_input():boolean;
-begin
- Result:=(Self.PasswordField.Text<>'') and (Self.FileField.Text<>'');
-end;
-
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Crypt studio';
- Self.Caption:='Crypt studio 1.1.1';
+ Self.Caption:='Crypt studio 1.1.2';
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
  Self.BorderStyle:=bsDialog;
@@ -128,6 +122,7 @@ begin
  Self.FileField.LabelPosition:=lpLeft;
  Self.PasswordField.LabelPosition:=lpLeft;
  Self.FileField.Enabled:=False;
+ Self.PasswordField.Enabled:=False;
 end;
 
 procedure TMainWindow.language_setup();
@@ -159,12 +154,12 @@ end;
 
 procedure TMainWindow.FileFieldChange(Sender: TObject);
 begin
- Self.StartButton.Enabled:=Self.check_input();
+ Self.PasswordField.Enabled:=Self.FileField.Text<>'';
 end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
- Self.StartButton.Enabled:=Self.check_input();
+ Self.StartButton.Enabled:=Self.PasswordField.Text<>'';
 end;
 
 procedure TMainWindow.EncryptionRadioButtonClick(Sender: TObject);
